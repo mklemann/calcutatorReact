@@ -5,7 +5,9 @@ export default props => {
 
     return (
         <button
-            onClick={e => props.click && props.click(props.label)}
+            onClick={e => props.click && props.click(e.target.innerHTML)}
+            onClick={() => props.click && props.click(props.label)}
+
             className={`
                 button 
                 ${props.double ? 'double' : ''} 
