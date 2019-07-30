@@ -24,7 +24,7 @@ export default class Calculator extends Component {
     state = { ...initialState }
 
     setOperation(op) {
-        console.log(op)
+        
     }
 
     setDigit(n) {
@@ -35,6 +35,16 @@ export default class Calculator extends Component {
         const displayValue = currentValue + n
 
         this.setState({ clearDisplay: false, displayValue })
+
+        if (n !== '.') {
+            const i = this.state.current
+            const newValue = parseFloat(displayValue)
+            const values = [...this.state.values]
+            values[i] = newValue
+
+            this.setState({ values })
+            console.log(values)
+        }
     }
 
     clearMemory() {
